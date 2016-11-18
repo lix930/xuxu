@@ -22,9 +22,15 @@ public class LoginController {
     public String CheckUser(@RequestParam("email") String email, @RequestParam("password") String password) {
         UserEntity user = userRepository.findByUsername(email);
 
-        if(user.getUsername().equals(email) && user.getPassword().equals(password))
+        if(user.getUsername() != null && user.getUsername().equals(email) && user.getPassword().equals(password))
             return "admin/blogs";
         else
             return "error";
+
+    }
+
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    public String toSignUp() {
+        return "signup";
     }
 }

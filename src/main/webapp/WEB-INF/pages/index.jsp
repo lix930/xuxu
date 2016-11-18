@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html lang="en">
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -42,7 +41,11 @@
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
 
+
     </form>
+
+
+    <a href="signup" class="btn btn-lg btn-info btn-block" role="button">注册</a>
 
 </div> <!-- /container -->
 
