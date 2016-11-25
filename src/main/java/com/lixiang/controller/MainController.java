@@ -1,6 +1,6 @@
 package com.lixiang.controller;
 
-import com.lixiang.model.UserEntity;
+import com.lixiang.entity.UserEntity;
 import com.lixiang.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

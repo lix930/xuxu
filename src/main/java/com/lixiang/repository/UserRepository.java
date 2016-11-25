@@ -1,6 +1,6 @@
 package com.lixiang.repository;
 
-import com.lixiang.model.UserEntity;
+import com.lixiang.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,4 +24,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer>{
 
     //按username来查找
     UserEntity findByUsername(String username);
+
+
 }

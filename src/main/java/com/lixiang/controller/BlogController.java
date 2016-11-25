@@ -1,14 +1,11 @@
 package com.lixiang.controller;
 
-import com.lixiang.model.BlogEntity;
-import com.lixiang.model.UserEntity;
+import com.lixiang.entity.BlogEntity;
+import com.lixiang.entity.UserEntity;
 import com.lixiang.repository.BlogRepository;
 import com.lixiang.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;

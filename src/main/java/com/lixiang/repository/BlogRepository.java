@@ -1,6 +1,6 @@
 package com.lixiang.repository;
 
-import com.lixiang.model.BlogEntity;
+import com.lixiang.entity.BlogEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
