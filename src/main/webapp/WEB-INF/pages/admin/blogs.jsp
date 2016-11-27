@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>SpringMVC 博客管理</title>
+    <title>内容管理</title>
 
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -22,10 +22,10 @@
 </head>
 <body>
 <div class="container">
-    <h1>SpringMVC 博客系统-博客管理</h1>
+    <h1>内容管理</h1>
     <hr/>
 
-    <h3>所有博客 <a href="/admin/blogs/add" type="button" class="btn btn-primary btn-sm">添加</a></h3>
+    <h3>所有内容 <a href="/admin/blogs/add" type="button" class="btn btn-primary btn-sm">添加</a></h3>
 
     <!-- 如果用户列表为空 -->
     <c:if test="${empty blogList}">

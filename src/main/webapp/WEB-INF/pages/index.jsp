@@ -45,9 +45,9 @@
 
     </form>
 
-
+    <!--
     <a href="signup" class="btn btn-lg btn-info btn-block" role="button">注册</a>
-
+    -->
 </div> <!-- /container -->
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
