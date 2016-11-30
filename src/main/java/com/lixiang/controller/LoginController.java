@@ -21,17 +21,17 @@ public class LoginController {
     @RequestMapping(value = "/Login", method = RequestMethod.POST)
     public String Check_User(@RequestParam("email") String email, @RequestParam("password") String password) {
         UserEntity user = userRepository.findByUsername(email);
+        if(user != null) {
+            if (user.getUsername().equals(email) && user.getPassword().equals(password))
+                return "redirect:admin/blogs";
 
-        if(user.getUsername() != null && user.getUsername().equals(email) && user.getPassword().equals(password))
-            return "redirect:admin/blogs";
-        else
-            return "error";
-
+        }
+        return "error.jsp";
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String toSignUp() {
-        return "signup";
+        return "signup.jsp";
     }
 
     @RequestMapping(value = "/services/users/check-user", method = RequestMethod.POST)
@@ -45,5 +45,6 @@ public class LoginController {
                 return user;
         }
         return user;
+
     }
 }

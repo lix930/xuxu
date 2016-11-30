@@ -12,7 +12,7 @@
     <script language="JavaScript" type="text/JavaScript">
         function checkUser() {
             $("checkUser").click(function () {
-                $("checkUser").
+                $("checkUser").html("aaaa");
             });
         }
         </script>

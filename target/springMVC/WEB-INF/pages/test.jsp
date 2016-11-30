@@ -9,11 +9,21 @@
 <html>
 <head>
     <title>Title</title>
+    <script language="JavaScript" type="text/JavaScript">
+        function checkUser() {
+            $("checkUser").click(function () {
+                $("checkUser").html("aaaa");
+            });
+        }
+        </script>
 </head>
 <body>
     <p>你好这是一个输入框</p>
     <input type="email" id="email">
-    <input type="button" id="checkUser" onclick="checkUser()">
+    <input type="button" id="checkUser" value="check" onclick="checkUser()">
     <button class="checkUser">检测用户名 </button>
+
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
 </body>
 </html>

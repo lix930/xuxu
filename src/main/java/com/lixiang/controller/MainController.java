@@ -23,7 +23,7 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
-        return "index";
+        return "index.jsp";
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
@@ -33,14 +33,14 @@ public class MainController {
 
         modelMap.addAttribute("userList", userList);
 
-        return "admin/users";
+        return "admin/users.jsp";
     }
 
     // get请求，访问添加用户 页面
     @RequestMapping(value = "/admin/users/add", method = RequestMethod.GET)
     public String addUser() {
         // 转到 admin/addUser.jsp页面
-        return "admin/addUser";
+        return "admin/addUser.jsp";
     }
 
     // post请求，处理添加用户请求，并重定向到用户管理页面
@@ -66,7 +66,7 @@ public class MainController {
     public String showUser(@PathVariable("id") Integer userId, ModelMap modelMap) {
         UserEntity userEntity = userRepository.findOne(userId);
         modelMap.addAttribute("user", userEntity);
-        return "admin/userDetail";
+        return "admin/userDetail.jsp";
     }
 
     // 更新用户信息 页面
@@ -78,7 +78,7 @@ public class MainController {
 
         // 传递给请求页面
         modelMap.addAttribute("user", userEntity);
-        return "admin/updateUser";
+        return "admin/updateUser.jsp";
     }
 
     // 更新用户信息 操作

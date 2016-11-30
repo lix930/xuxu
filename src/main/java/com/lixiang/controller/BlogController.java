@@ -31,7 +31,7 @@ public class BlogController {
     public String showBlogs(ModelMap modelMap) {
         List<BlogEntity> blogList = blogRepository.findAll();
         modelMap.addAttribute("blogList", blogList);
-        return "admin/blogs";
+        return "admin/blogs.jsp";
     }
 
     // 添加博文
@@ -40,7 +40,7 @@ public class BlogController {
         List<UserEntity> userList = userRepository.findAll();
         // 向jsp注入用户列表
         modelMap.addAttribute("userList", userList);
-        return "admin/addBlog";
+        return "admin/addBlog.jsp";
     }
 
     // 添加博文，POST请求，重定向为查看博客页面
@@ -61,7 +61,7 @@ public class BlogController {
     public String showBlog(@PathVariable("id") int id, ModelMap modelMap) {
         BlogEntity blog = blogRepository.findOne(id);
         modelMap.addAttribute("blog", blog);
-        return "admin/blogDetail";
+        return "admin/blogDetail.jsp";
     }
 
     // 修改博文内容，页面
@@ -72,7 +72,7 @@ public class BlogController {
         List<UserEntity> userList = userRepository.findAll();
         modelMap.addAttribute("blog", blog);
         modelMap.addAttribute("userList", userList);
-        return "admin/updateBlog";
+        return "admin/updateBlog.jsp";
     }
 
     // 修改博客内容，POST请求

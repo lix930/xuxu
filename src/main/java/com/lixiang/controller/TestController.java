@@ -20,12 +20,12 @@ public class TestController {
 
     @RequestMapping(value = "/test/home", method = RequestMethod.GET)
     public String TestHome() {
-        return "test";
+        return "1.html";
     }
 
 
     @RequestMapping(value = "/test/login", method = RequestMethod.POST)
-    String TestLogin(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
+    public @ResponseBody String TestLogin(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
         UserEntity userEntity = userRepository.findByUsername(email);
         if(userEntity != null) {
             if(userEntity.getUsername().equals(email) && userEntity.getPassword().equals(password))
@@ -53,6 +53,8 @@ public class TestController {
         UserEntity userEntity = userRepository.findByUsername(email);
         return userEntity != null;
     }
+
+
 
 
 
