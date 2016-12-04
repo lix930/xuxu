@@ -4,6 +4,11 @@ import com.lixiang.model.Greeting;
 import com.lixiang.entity.UserEntity;
 import com.lixiang.model.User;
 import com.lixiang.repository.UserRepository;
+import com.taobao.api.ApiException;
+import com.taobao.api.DefaultTaobaoClient;
+import com.taobao.api.TaobaoClient;
+import com.taobao.api.request.AlibabaAliqinFcSmsNumSendRequest;
+import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,13 +34,13 @@ public class TestController {
         UserEntity userEntity = userRepository.findByUsername(email);
         if(userEntity != null) {
             if(userEntity.getUsername().equals(email) && userEntity.getPassword().equals(password))
-                return "success";
+                return "OK";
         }
         return "error";
     }
     //注册账号
     @RequestMapping(value = "/test/register", method = RequestMethod.POST)
-    public @ResponseBody boolean TestRegister(@RequestParam(value = "email")String email, @RequestParam(value = "password")String password) {
+    public @ResponseBody String TestRegister(@RequestParam(value = "email")String email, @RequestParam(value = "password")String password) {
         UserEntity userEntity = userRepository.findByUsername(email);
         if(userEntity == null) {
             userEntity = new UserEntity();
@@ -43,9 +48,9 @@ public class TestController {
             userEntity.setPassword(password);
 
             userRepository.saveAndFlush(userEntity);
-            return true;
+            return "OK";
         }
-        return false;
+        return "error";
     }
     //判断用户名是否 存在
     @RequestMapping(value = "/test/register/isexist", method = RequestMethod.GET)
@@ -56,6 +61,38 @@ public class TestController {
 
 
 
+    //发送 短信验证码
+    /**
+     * @ code：  发送的验证码
+     * @ phone： 验证码接收的手机号
+     * */
+    @RequestMapping(value = "/test/register/sendcode", method = RequestMethod.GET)
+    public @ResponseBody String SendCode(@RequestParam(value = "code") String code, @RequestParam(value = "phone") String phoneNumber) {
+        String url = "http://gw.api.taobao.com/router/rest";
+        String appkey = "23554532";
+        String secret = "6f2ebe4c3a5ca2adfb76405827ad0b94";
+        TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
+        AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
+        req.setExtend("");
+        req.setSmsType("normal");
+        req.setSmsFreeSignName("智能嘘嘘扣");
+        req.setSmsParamString( "{code:'" + code +"'}" );
+        req.setRecNum( phoneNumber );
+        req.setSmsTemplateCode( "SMS_32760090" );
+
+        AlibabaAliqinFcSmsNumSendResponse rsp = null;
+        try {
+            rsp = client.execute(req);
+            System.out.println(rsp.getBody());
+            return rsp.getBody();
+
+        } catch (ApiException e) {
+            e.printStackTrace();
+            return "error";
+        }
+
+
+    }
 
 
 }

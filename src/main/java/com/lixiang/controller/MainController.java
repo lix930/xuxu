@@ -23,7 +23,7 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
-        return "index.jsp";
+        return "1.html";
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)

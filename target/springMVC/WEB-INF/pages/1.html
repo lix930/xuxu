@@ -249,7 +249,7 @@
 
     <div class="row" id="login-overview">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <form id="login-form" role="form" action="../services/users/check-user.php" method="post">
+            <form id="login-form" role="form" action="../test/login" method="post">
                 <div class="form-group">
                     <div id="login-msg" class="col-xs-12 col-sm-12 col-md-12 alert alert-warning">
                         警告：
@@ -276,7 +276,7 @@
                 </div>
 
                 <div class="form-group">
-                    <a href="./forgot-password.php" class="forgot-password pull-right">忘记密码</a>
+                    <a href="./forgot-password" class="forgot-password pull-right">忘记密码</a>
                 </div>
             </form>
         </div>
@@ -286,7 +286,7 @@
     <!-- <div class="container"> -->
     <div class="row" id="register-overview">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <form id="register-form" role="form" action="../services/users/check-user.php" method="post">
+            <form id="register-form" role="form" action="../test/register" method="post">
                 <div class="form-group">
                     <div id="register-msg" class="col-xs-12 col-sm-12 col-md-12 alert alert-warning">
                         警告：
@@ -312,9 +312,7 @@
             </form>
         </div>
     </div>
-    <div class="demo">
-        <a href="http://dev.tianti.com/#app-overview:342f0b58cc595bc22c29a9a24b64af7a">查看演示数据</a>
-    </div>
+
 </div>
 
 <!-- Jquery -->
@@ -419,14 +417,14 @@
             $.ajax({
                 //type: $("#login-form").attr("method"),
                 type: 'POST',
-                url: '../services/users/check-user.php',
+                url: '../test/login',
                 data: "email="+email+"&password="+password,
                 success: function(html) {
                     if (html == "OK") {
                         if(callback){
                             window.location=callback;
                         }else{
-                            window.location="../index.php";
+                            window.location="../admin/blogs";
                         }
 
                         $("#login-msg").css('visibility', 'hidden');
@@ -503,13 +501,13 @@
 
             $.ajax({
                 type: $("#register-form").attr("method"),
-                url: '../services/users/new-user.php',
-                data: "email="+email+"&password="+password+"&confirmPassword="+confirmPassword,
+                url: '../test/register',
+                data: "email="+email+"&password="+password,
 
                 success: function(html) {
                     if (html == "OK") {
                         alert("注册成功，请登录到邮箱激活账号");
-                        window.location="./login.php";
+                        window.location="../admin/blogs";
 
                         $("#register-msg").css('visibility', 'hidden');
                     } else {
