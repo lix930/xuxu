@@ -23,13 +23,13 @@ public class TestController {
     @Autowired
     UserRepository userRepository;
 
-    @RequestMapping(value = "/test/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/home", method = RequestMethod.GET)
     public String TestHome() {
         return "1.html";
     }
 
 
-    @RequestMapping(value = "/test/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/login", method = RequestMethod.POST)
     public @ResponseBody String TestLogin(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
         UserEntity userEntity = userRepository.findByUsername(email);
         if(userEntity != null) {
@@ -39,7 +39,7 @@ public class TestController {
         return "error";
     }
     //注册账号
-    @RequestMapping(value = "/test/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/register", method = RequestMethod.POST)
     public @ResponseBody String TestRegister(@RequestParam(value = "email")String email, @RequestParam(value = "password")String password) {
         UserEntity userEntity = userRepository.findByUsername(email);
         if(userEntity == null) {
@@ -53,7 +53,7 @@ public class TestController {
         return "error";
     }
     //判断用户名是否 存在
-    @RequestMapping(value = "/test/register/isexist", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/register/isexist", method = RequestMethod.GET)
     public @ResponseBody boolean Register_isExist(@RequestParam(value = "email")String email) {
         UserEntity userEntity = userRepository.findByUsername(email);
         return userEntity != null;

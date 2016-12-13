@@ -249,7 +249,7 @@
 
     <div class="row" id="login-overview">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <form id="login-form" role="form" action="../test/login" method="post">
+            <form id="login-form" role="form" action="../api/login" method="post">
                 <div class="form-group">
                     <div id="login-msg" class="col-xs-12 col-sm-12 col-md-12 alert alert-warning">
                         警告：
@@ -286,7 +286,7 @@
     <!-- <div class="container"> -->
     <div class="row" id="register-overview">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <form id="register-form" role="form" action="../test/register" method="post">
+            <form id="register-form" role="form" action="../api/register" method="post">
                 <div class="form-group">
                     <div id="register-msg" class="col-xs-12 col-sm-12 col-md-12 alert alert-warning">
                         警告：
@@ -417,7 +417,7 @@
             $.ajax({
                 //type: $("#login-form").attr("method"),
                 type: 'POST',
-                url: '../test/login',
+                url: '../api/login',
                 data: "email="+email+"&password="+password,
                 success: function(html) {
                     if (html == "OK") {
@@ -501,7 +501,7 @@
 
             $.ajax({
                 type: $("#register-form").attr("method"),
-                url: '../test/register',
+                url: '../api/register',
                 data: "email="+email+"&password="+password,
 
                 success: function(html) {
