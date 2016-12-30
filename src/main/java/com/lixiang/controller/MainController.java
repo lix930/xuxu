@@ -5,10 +5,7 @@ import com.lixiang.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,13 +24,16 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
-    public String getUsers(ModelMap modelMap) {
+    public String getUsers(ModelMap modelMap, @RequestHeader("Referer") String referer) {
+        if(referer == null){ // 阻止 不带referer的访问
+            return "1.html";
+        }else {
+            List<UserEntity> userList = userRepository.findAll();
 
-        List<UserEntity> userList = userRepository.findAll();
+            modelMap.addAttribute("userList", userList);
 
-        modelMap.addAttribute("userList", userList);
-
-        return "admin/users.jsp";
+            return "admin/users.jsp";
+        }
     }
 
     // get请求，访问添加用户 页面

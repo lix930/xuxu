@@ -9,9 +9,15 @@
     <meta name="author" content="">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <!-- Bootstrap core CSS -->
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="/static/libs/bootstrap-3.3.5/css/bootstrap.min.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <style type="text/css">
         html {
             width: 100%;
@@ -315,11 +321,11 @@
 
 </div>
 
-<!-- Jquery -->
-<script src="/static/libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 
-<!-- Bootstrap -->
-<script src="/static/libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
     // 验证需要演示登录，注册视图
@@ -417,14 +423,14 @@
             $.ajax({
                 //type: $("#login-form").attr("method"),
                 type: 'POST',
-                url: '../api/login',
+                url: './api/login',
                 data: "email="+email+"&password="+password,
                 success: function(html) {
                     if (html == "OK") {
                         if(callback){
                             window.location=callback;
                         }else{
-                            window.location="../admin/blogs";
+                            window.location="./admin/users";
                         }
 
                         $("#login-msg").css('visibility', 'hidden');
@@ -501,7 +507,7 @@
 
             $.ajax({
                 type: $("#register-form").attr("method"),
-                url: '../api/register',
+                url: './api/register',
                 data: "email="+email+"&password="+password,
 
                 success: function(html) {

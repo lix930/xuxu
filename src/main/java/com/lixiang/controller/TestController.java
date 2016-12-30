@@ -38,9 +38,60 @@ public class TestController {
         }
         return "error";
     }
+
+    @RequestMapping(value = "/api/login/get", method = RequestMethod.GET)
+    public @ResponseBody String TestLogin1(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
+        UserEntity userEntity = userRepository.findByUsername(email);
+        if(userEntity != null) {
+            if(userEntity.getUsername().equals(email) && userEntity.getPassword().equals(password))
+                return "OK";
+        }
+        return "error";
+    }
+    // 兼容老版 api
+    // 有时候 部署到tomcat中，需要带项目名才能访问。。。。
+    @RequestMapping(value = "springMVC/api/login/get", method = RequestMethod.GET)
+    public @ResponseBody String TestLogin2(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
+        UserEntity userEntity = userRepository.findByUsername(email);
+        if(userEntity != null) {
+            if(userEntity.getUsername().equals(email) && userEntity.getPassword().equals(password))
+                return "OK";
+        }
+        return "error";
+    }
     //注册账号
     @RequestMapping(value = "/api/register", method = RequestMethod.POST)
     public @ResponseBody String TestRegister(@RequestParam(value = "email")String email, @RequestParam(value = "password")String password) {
+        UserEntity userEntity = userRepository.findByUsername(email);
+        if(userEntity == null) {
+            userEntity = new UserEntity();
+            userEntity.setUsername(email);
+            userEntity.setPassword(password);
+
+            userRepository.saveAndFlush(userEntity);
+            return "OK";
+        }
+        return "error";
+    }
+
+    @RequestMapping(value = "/api/register/get", method = RequestMethod.GET)
+    public @ResponseBody String TestRegister1(@RequestParam(value = "email")String email, @RequestParam(value = "password")String password) {
+        UserEntity userEntity = userRepository.findByUsername(email);
+        if(userEntity == null) {
+            userEntity = new UserEntity();
+            userEntity.setUsername(email);
+            userEntity.setPassword(password);
+
+            userRepository.saveAndFlush(userEntity);
+            return "OK";
+        }
+        return "error";
+    }
+
+    // 兼容老版 api
+    // 有时候 部署到tomcat中，需要带项目名才能访问。。。。
+    @RequestMapping(value = "springMVC/api/register/get", method = RequestMethod.GET)
+    public @ResponseBody String TestRegister2(@RequestParam(value = "email")String email, @RequestParam(value = "password")String password) {
         UserEntity userEntity = userRepository.findByUsername(email);
         if(userEntity == null) {
             userEntity = new UserEntity();
